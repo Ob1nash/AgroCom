@@ -1,28 +1,31 @@
-//import React from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Home from './components/Home';
-import Product from './components/Product'; 
+import Product from './components/Product';
 import Navbar from './components/Navbar';
-import Cart from './components/Cart'
-import Wishlist from './components/WishlistPage'
+import Cart from './components/Cart';
+import Wishlist from './components/WishlistPage';
+import CheckoutPage from './components/Checkoutpage';
+import Signup from './components/Signup';
+import { CartProvider } from './components/CartContext';
 
 function App() {
-  
-
   return (
     <Router>
-      <div className="App">
-      
-        <Navbar/>
-        <Routes>
-          <Route path="/"  element={<Home />} />
-          <Route path="/product" element={<Product/>} />
-          <Route path="/Cart" element={<Cart/>} />
-          <Route path="/Wishlist" element={<Wishlist/>} />
-        
-        </Routes>
-      </div>
+      <CartProvider>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/Cart" element={<Cart />} />
+            <Route path="/Wishlist" element={<Wishlist />} />
+            <Route path="/Checkoutpage" element={<CheckoutPage />} />
+            <Route path="/Signup" element={<Signup />} />
+          </Routes>
+        </div>
+      </CartProvider>
     </Router>
   );
 }

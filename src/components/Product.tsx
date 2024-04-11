@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { CartContext } from './CartContext';
 
 interface Product {
   id: number;
@@ -8,31 +9,60 @@ interface Product {
 }
 
 const ProductCardsPage: React.FC = () => {
-  // Dummy data for featured products
+  const { addToCart } = useContext(CartContext)!;
   const [products, setProducts] = useState<Product[]>([
-    { id: 1, name: "Product 1", price: 19.99, imageUrl: "https://img.freepik.com/free-photo/kiwies-with-greenery-peppers_114579-5953.jpg?w=996&t=st=1711619057~exp=1711619657~hmac=d41eb1ace4a1b264ff973790a0529f403ec548427d8e2a456a038a16bb8cd604" },
-    { id: 2, name: "Product 2", price: 29.99, imageUrl: "https://www.shutterstock.com/shutterstock/photos/281151791/display_1500/stock-photo-agricultural-product-assortment-corn-cob-in-basket-cereals-in-sacks-and-growing-wheat-in-281151791.jpg" },
-    { id: 3, name: "Product 3", price: 39.99, imageUrl: "https://ajaybiotech.com/images/banner-blog-products-mobile.jpg" },
-   
+    {
+      id: 1,
+      name: "Product 1",
+      price: 19.99,
+      imageUrl: "https://img.freepik.com/free-photo/kiwies-with-greenery-peppers_114579-5953.jpg?w=996&t=st=1711619057~exp=1711619657~hmac=d41eb1ace4a1b264ff973790a0529f403ec548427d8e2a456a038a16bb8cd604"
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      price: 29.99,
+      imageUrl: "https://www.shutterstock.com/shutterstock/photos/281151791/display_1500/stock-photo-agricultural-product-assortment-corn-cob-in-basket-cereals-in-sacks-and-growing-wheat-in-281151791.jpg"
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      price: 39.99,
+      imageUrl: "https://ajaybiotech.com/images/banner-blog-products-mobile.jpg"
+    },
+    {
+      id: 4,
+      name: "Product 4",
+      price: 9.99,
+      imageUrl: "https://ajaybiotech.com/images/banner-blog-products-mobile.jpg"
+    },
   ]);
 
-  const [wishlist, setWishlist] = useState<number[]>([]);
+  const [wishlist, setWishlist] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem('wishlist');
+    if (savedWishlist) {
+      setWishlist(JSON.parse(savedWishlist));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
 
   const toggleWishlist = (productId: number) => {
-    if (wishlist.includes(productId)) {
-      setWishlist(prev => prev.filter(id => id !== productId));
-    } else {
-      setWishlist(prev => [...prev, productId]);
+    const product = products.find(p => p.id === productId);
+    if (product) {
+      if (wishlist.some(item => item.id === productId)) {
+        setWishlist(prev => prev.filter(item => item.id !== productId));
+      } else {
+        setWishlist(prev => [...prev, product]);
+      }
     }
   };
 
   const isAddedToWishlist = (productId: number) => {
-    return wishlist.includes(productId);
-  };
-
-  const addToCart = (productId: number) => {
-    
-    console.log(`Product ${productId} added to cart`);
+    return wishlist.some(item => item.id === productId);
   };
 
   return (
@@ -45,7 +75,7 @@ const ProductCardsPage: React.FC = () => {
           <div className="flex justify-between mt-4">
             <button
               className="bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105"
-              onClick={() => addToCart(product.id)}
+              onClick={() => addToCart(product)}
             >
               Add to Cart
             </button>
@@ -66,6 +96,6 @@ const ProductCardsPage: React.FC = () => {
       ))}
     </div>
   );
-}
+};
 
 export default ProductCardsPage;

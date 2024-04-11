@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -15,9 +13,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white font-semibold text-lg px-4">AgroCom</Link>
 
-        <Link to="/profile" className="md:hidden text-white px-4">
-          <FontAwesomeIcon icon={faUser} className="h-6 w-6 fill-current" />
-        </Link>
+      
 
         <button className="md:hidden text-white px-4" onClick={toggleDropdown}>
           <svg
@@ -32,10 +28,11 @@ const Navbar: React.FC = () => {
           </svg>
         </button>
         <div className="md:flex hidden">
-          <Link to="/" className="text-white mx-4 hover:text-gray-300 transition-colors duration-300">Home</Link>
+          <Link to="/" className="text-white mx-4  hover:text-gray-300 transition-colors duration-300">Home</Link>
           {/* <Link to="/product" className="text-white mx-4 hover:text-gray-300 transition-colors duration-300">Products</Link> */}
-          <Link to="/cart" className="text-white mr-4">Cart</Link>
+          <Link to="/cart" className="text-white  mr-4">Cart</Link>
           <Link to="/Wishlist" className="text-white mr-4">Wishlist</Link>
+          <Link to="/Signup" className="text-white mr-4">Sign Up</Link>
           
         </div>
       </div>
@@ -45,6 +42,8 @@ const Navbar: React.FC = () => {
           {/* <Link to="/product" className="block text-white py-2 px-4">Products</Link> */}
           <Link to="/cart" className="block text-white py-2 px-4">Cart</Link>
           <Link to="/Wishlist" className="block text-white py-2 px-4">Wishlist</Link>
+          <Link to="/Signup" className="block text-white py-2 px-4">Sign Up</Link>
+          
          
         </div>
       )}

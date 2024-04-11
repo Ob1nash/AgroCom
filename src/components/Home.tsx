@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCardsPage from './Product';
+import Banner from './banner';
 
 const Home: React.FC = () => {
   return (
@@ -11,6 +12,8 @@ const Home: React.FC = () => {
           <p className="text-lg sm:text-xl lg:text-2xl mb-8 animate__animated animate__fadeIn animate__delay-1s">Growing Connections, Harvesting Solutions!</p>
         </div>
       </div>
+      
+    <Banner />
 
       {/* Main Content Section */}
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
