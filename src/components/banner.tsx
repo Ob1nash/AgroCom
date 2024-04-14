@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 // Define the array of slides with images and headings
 const slides = [
-    { image: 'src/assets/images/featured.png', heading: 'Add a product to cart or wishlist for later' },
-    { image: 'src/assets/images/cart.png', heading: 'View Cart' },
-    { image: 'src/assets/images/checkout.png', heading: 'Click on Buy Now to Confirm purchase' },
+    { image: 'public/images/featured.png', heading: 'Add a product to cart or wishlist for later' },
+    { image: 'public/images/cart.png', heading: 'View Cart' },
+    { image: 'public/images/checkout.png', heading: 'Click on Buy Now to Confirm purchase' },
 ];
 
 const Slider = () => {
