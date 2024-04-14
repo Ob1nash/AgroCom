@@ -17,7 +17,7 @@ const Cart: React.FC = () => {
   const totalAmount = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
   const handleBuyNow = () => {
-    navigate('/checkout', { state: { cartItems, totalAmount } });
+    navigate('/Checkoutpage', { state: { cartItems, totalAmount } });
   };
 
   return (

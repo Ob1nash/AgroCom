@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Signup = () => {
   // State variables for form fields
@@ -9,7 +9,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Perform form validation and signup logic here
     console.log('Form submitted:', { firstName, lastName, email, password });

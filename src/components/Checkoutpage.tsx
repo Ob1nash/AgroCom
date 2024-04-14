@@ -24,7 +24,7 @@ const CheckoutPage = () => {
  };
 
  // Example of a form to collect shipping details
- const handleInputChange = (event) => {
+ const handleInputChange = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { name, value } = event.target;
     setShippingDetails(prevDetails => ({
       ...prevDetails,

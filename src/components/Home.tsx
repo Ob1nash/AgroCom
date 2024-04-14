@@ -1,8 +1,16 @@
 import React from 'react';
 import ProductCardsPage from './Product';
 import Banner from './banner';
+import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
+
+
+  const navigate = useNavigate();
+  const handleSignup = () => {
+    navigate('/Signup');
+  }
+
   return (
     <div style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2016/12/16/13/18/canola-fields-1911392_640.jpg')`, backgroundSize: 'cover', minHeight: '100vh' }}>
       {/* Hero Section */}
@@ -29,7 +37,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6 animate__animated animate__fadeIn animate__delay-2s">Ready to Get Started?</h2>
           <p className="text-lg mb-8 animate__animated animate__fadeIn animate__delay-2s">Join us today and experience the best products and services.</p>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300">Sign Up Now</button>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300" onClick={handleSignup}>Sign Up Now</button>
         </div>
       </div>
     </div>

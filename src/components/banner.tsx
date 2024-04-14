@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 
 // Define the array of slides with images and headings
@@ -21,7 +21,7 @@ const Slider = () => {
                     x: ['0%', '-100%'],
                     transition: {
                         ease: 'linear',
-                        duration: 10,
+                        duration: 11,
                         repeat: Infinity,
                     }
                 }}

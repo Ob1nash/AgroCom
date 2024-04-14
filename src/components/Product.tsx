@@ -10,7 +10,7 @@ interface Product {
 
 const ProductCardsPage: React.FC = () => {
   const { addToCart } = useContext(CartContext)!;
-  const [products, setProducts] = useState<Product[]>([
+  const [products] = useState<Product[]>([
     {
       id: 1,
       name: "Product 1",
