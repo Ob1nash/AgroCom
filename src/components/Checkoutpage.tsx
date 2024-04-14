@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import { ChangeEventHandler } from 'react';
 
 
 const CheckoutPage = () => {
@@ -24,7 +24,7 @@ const CheckoutPage = () => {
  };
 
  // Example of a form to collect shipping details
- const handleInputChange = (event: React.MouseEvent<HTMLButtonElement>) => {
+ const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
 
     const { name, value } = event.target as HTMLInputElement;
     // const { name, value } = event.target;
