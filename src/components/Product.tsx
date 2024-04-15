@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from './CartContext';
+import { useNavigate } from 'react-router-dom';
+
 
 interface Product {
   id: number;
@@ -9,6 +11,8 @@ interface Product {
 }
 
 const ProductCardsPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const { addToCart } = useContext(CartContext)!;
   const [products] = useState<Product[]>([
     {
@@ -65,6 +69,12 @@ const ProductCardsPage: React.FC = () => {
     return wishlist.some(item => item.id === productId);
   };
 
+
+  const handleBuyNow = () => {
+    navigate('/Checkoutpage');
+  };
+
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {products.map(product => (
@@ -81,7 +91,7 @@ const ProductCardsPage: React.FC = () => {
             </button>
             <button
               className="bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105"
-              onClick={() => console.log('Buy Now clicked for product', product.id)}
+              onClick={handleBuyNow}
             >
               Buy Now
             </button>
