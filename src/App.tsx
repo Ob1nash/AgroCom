@@ -15,7 +15,7 @@ function App() {
     <Router>
       <WishlistProvider>
         <CartProvider>
-          <div className="App">
+          <div className="App pt-16">
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
